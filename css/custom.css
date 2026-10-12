@@ -14,3 +14,10 @@ body {
     height: 180px;
     object-fit: cover;
 }
+
+.carousel-item img {
+    height: 320px;
+    object-fit: cover; /* Кадрирует картинки слайдера без искажения пропорций */
+    border-radius: 0.5rem; /* Скругляет углы слайдов под стиль Bootstrap */
+}
+
