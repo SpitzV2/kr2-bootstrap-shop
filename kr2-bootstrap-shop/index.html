@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учебный интернет-магазин — CactusShop</title>
+  <!-- Локальное подключение Bootstrap CSS -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Пользовательские стили с точной палитрой из КР1 -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<!-- Шапка сайта (Header) с фирменной стилизацией КР1 и Bootstrap Navbar -->
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom py-3" aria-label="Основная навигация">
+      <div class="container-fluid px-0">
+        <a class="site-header__logo navbar-brand me-4" href="index.html">СactusShop</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1 gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">Каталог</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#advantages">Преимущества</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#popular">Популярные товары</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Обратная связь</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.html">Товар</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order.html">Заявка</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button class="button button--primary py-1 px-3" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" style="font-size: 14px;">
+                Заказать
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container py-4">
+  <!-- Информационное сообщение (Bootstrap Alert) -->
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-4" role="alert">
+    <div class="me-auto">
+      <strong> Добро пожаловать в CactusShop!</strong> Все суккуленты выращены в правильном минеральном субстрате и готовы к безопасной транспортировке.
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+  </div>
+
+  <!-- Hero-блок с точным цветом #B8B4A0 из КР1, совмещённый с Bootstrap-сеткой и Carousel -->
+  <section class="hero">
+    <div class="row align-items-center g-4">
+      <div class="col-12 col-lg-7">
+        <h1 class="display-6 fw-bold mb-3">Ваш личный оазис дома</h1>
+        <p class="lead mb-4" style="font-size: 17px;">
+          Откройте для себя коллекцию неприхотливых и редких суккулентов, которые украсят любой интерьер. Принесите частичку живой природы на свой рабочий стол или подоконник.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a class="button button--primary" href="#popular">Перейти к товарам</a>
+          <a class="button button--secondary" href="catalog.html">В каталог</a>
+        </div>
+      </div>
+      <div class="col-12 col-lg-5">
+        <!-- Слайдер карусели (Bootstrap Carousel) -->
+        <div id="heroCarousel" class="carousel slide shadow-sm" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4000">
+              <img src="images/ferocactus.jpg" class="d-block w-100" alt="Ферокактус шварции">
+              <div class="carousel-caption d-none d-sm-block">
+                <span class="fw-bold">Ферокактус шварции</span>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="images/echeveria.jpg" class="d-block w-100" alt="Эхеверия мун фейри">
+              <div class="carousel-caption d-none d-sm-block">
+                <span class="fw-bold">Эхеверия мун фейри</span>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="images/kaktus-miks.jpg" class="d-block w-100" alt="Кактус Микс">
+              <div class="carousel-caption d-none d-sm-block">
+                <span class="fw-bold">Кактус Микс</span>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция преимуществ из КР1 на Bootstrap-сетке row/col-md-3 -->
+  <section class="section mb-5" id="advantages">
+    <h2 class="h3 fw-bold mb-4">Наши преимущества</h2>
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="advantage-card">
+          <h3 class="h6 fw-bold mb-2">Бережная доставка</h3>
+          <p class="small text-muted mb-0">Надежно упаковываем каждое растение для безопасной транспортировки в любое время года.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="advantage-card">
+          <h3 class="h6 fw-bold mb-2">Здоровые корни</h3>
+          <p class="small text-muted mb-0">Все суккуленты выращены в правильном субстрате и полностью готовы к пересадке.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="advantage-card">
+          <h3 class="h6 fw-bold mb-2">Простой уход</h3>
+          <p class="small text-muted mb-0">К каждому заказу прилагается понятная инструкция по правильному поливу и свету.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="advantage-card">
+          <h3 class="h6 fw-bold mb-2">Редкие виды</h3>
+          <p class="small text-muted mb-0">Находим и разводим уникальные сортовые суккуленты со всего мира.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция популярных товаров (точное размещение из КР1) -->
+  <section class="section mb-5" id="popular">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="h3 fw-bold mb-0">Популярные товары</h2>
+      <a class="button button--secondary py-1 px-3" href="catalog.html">Все товары &rarr;</a>
+    </div>
+
+    <div class="row g-4">
+      <!-- Товар 1: Ферокактус шварции -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="product-card h-100">
+          <span class="product-card__badge product-card__badge--hit">Хит</span>
+          <img class="product-card__image" src="images/ferocactus.jpg" alt="Ферокактус шварции в горшке" width="300" height="300" loading="lazy">
+          <h3 class="product-card__title">Ферокактус шварции</h3>
+          <p class="product-card__description">Ферокактус Шварции (Ferocactus schwarzii) — это необычный комнатный кактус с плотным шаровидным стеблем, выраженными рёбрами и декоративными светлыми колючками.</p>
+          <p class="product-card__price">Цена: 381 руб.</p>
+          <div class="d-flex gap-2 mt-auto">
+            <a class="button button--secondary" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Ферокактус шварции">Заказать</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Товар 2: Хавортия маргаритифера -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="product-card h-100">
+          <img class="product-card__image" src="images/haworthia.jpg" alt="Хавортия маргаритифера" width="300" height="300" loading="lazy">
+          <h3 class="product-card__title">Хавортия маргаритифера</h3>
+          <p class="product-card__description">Хавортия Маргаритифера (Haworthia Margaritifera) – это редкое комнатное растение и суккулент, отличающееся плотными зелёными листьями с белыми выпуклыми точками, напоминающими жемчужины.</p>
+          <p class="product-card__price">Цена: 499 руб.</p>
+          <div class="d-flex gap-2 mt-auto">
+            <a class="button button--secondary" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Хавортия маргаритифера">Заказать</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Товар 3: Эхеверия мун фейри -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="product-card h-100">
+          <span class="product-card__badge product-card__badge--new">Новинка</span>
+          <img class="product-card__image" src="images/echeveria.jpg" alt="Эхеверия мун фейри" width="300" height="300" loading="lazy">
+          <h3 class="product-card__title">Эхеверия мун фейри</h3>
+          <p class="product-card__description">Эхеверия Мун Фейри (Echeveria Moon Fairy) – это миниатюрное декоративное комнатное растение, напоминающее изящную розу из плотных мясистых листьев. Идеально для светлых подоконников.</p>
+          <p class="product-card__price">Цена: 659 руб.</p>
+          <div class="d-flex gap-2 mt-auto">
+            <a class="button button--secondary" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Эхеверия мун фейри">Заказать</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Интерактивный компонент Accordion (Частые вопросы по уходу) -->
+  <section class="section mb-5">
+    <h2 class="h3 fw-bold mb-4">Часто задаваемые вопросы по уходу</h2>
+    <div class="accordion" id="mainAccordion">
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Как часто поливать суккуленты?
+          </button>
+        </h3>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#mainAccordion">
+          <div class="accordion-body">
+            Поливайте растения только после полного просыхания почвы: летом примерно 1 раз в 2 недели, а зимой — 1 раз в месяц умеренно.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Какое освещение требуется растениям?
+          </button>
+        </h3>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#mainAccordion">
+          <div class="accordion-body">
+            Большинство суккулентов любят яркий рассеянный или прямой солнечный свет южных и восточных окон.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Как осуществляется упаковка и доставка?
+          </button>
+        </h3>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#mainAccordion">
+          <div class="accordion-body">
+            Каждое растение надёжно фиксируется в горшке и оборачивается теплоизоляционным материалом для защиты корней.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Подвал сайта (Footer) в точной палитре #F2F1EB из КР1 -->
+<footer>
+  <div class="container text-center text-md-start">
+    <div class="row align-items-center g-2">
+      <div class="col-12 col-md-6">
+        <p class="mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="mb-0 text-muted">Магазин комнатных растений и суккулентов CactusShop</p>
+      </div>
+      <div class="col-12 col-md-6 text-md-end">
+        <p class="mb-1"><strong>Контрольная работа №2</strong> • Bootstrap 5</p>
+        <p class="mb-0 text-muted">Автор: Комарова Влада Андреевна, ЭФБО-03-2025</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Модальное окно заявки (Bootstrap Modal) -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+      <div class="modal-header" style="background-color: var(--color-shapka);">
+        <h2 class="modal-title h5 mb-0" id="orderModalLabel">Оформление заявки</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="modalOrderForm" novalidate>
+          <div class="mb-3">
+            <label for="modal-product" class="form-label fw-bold">Выбранный товар</label>
+            <select id="modal-product" class="form-select" required>
+              <option value="Ферокактус шварции" selected>Ферокактус шварции (381 руб.)</option>
+              <option value="Хавортия маргаритифера">Хавортия маргаритифера (499 руб.)</option>
+              <option value="Эхеверия мун фейри">Эхеверия мун фейри (659 руб.)</option>
+              <option value="Кактус Микс (Cactus Mix)">Кактус Микс (2679 руб.)</option>
+              <option value="Эхинокактус грузони">Эхинокактус грузони (4789 руб.)</option>
+              <option value="Крассула овата минор">Крассула овата минор (899 руб.)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="modal-name" class="form-label fw-bold">Имя</label>
+            <input id="modal-name" type="text" class="form-control" placeholder="Введите ваше имя" required minlength="2">
+            <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-email" class="form-label fw-bold">E-mail</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">@</span>
+              <input id="modal-email" type="email" class="form-control" placeholder="example@mail.ru" required>
+            </div>
+            <div class="invalid-feedback">Укажите корректный e-mail.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-phone" class="form-label fw-bold">Телефон</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">+7</span>
+              <input id="modal-phone" type="tel" class="form-control" placeholder="900 000-00-00" required>
+            </div>
+            <div class="invalid-feedback">Укажите номер телефона.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-comment" class="form-label fw-bold">Комментарий</label>
+            <textarea id="modal-comment" class="form-control" rows="3" placeholder="Укажите дополнительную информацию"></textarea>
+          </div>
+          <div class="form-check mb-4">
+            <input id="modal-agree" class="form-check-input" type="checkbox" required checked>
+            <label class="form-check-label" for="modal-agree">
+              Я согласен на обработку данных
+            </label>
+            <div class="invalid-feedback">Требуется согласие.</div>
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <button type="button" class="button button--secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="button button--primary">Отправить заявку</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Всплывающее уведомление (Bootstrap Toast) -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+  <div id="liveToast" class="toast align-items-center text-white border-0" style="background-color: var(--color-success);" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Форма успешно отправлена! Наш менеджер скоро свяжется с вами.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Плавающая кнопка возврата наверх из КР1 -->
+<a class="scroll-top-btn" href="#" title="Наверх">↑</a>
+
+<!-- Локальное подключение Bootstrap JS Bundle -->
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const modalForm = document.getElementById('modalOrderForm');
+    const toastEl = document.getElementById('liveToast');
+    const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+    const modalEl = document.getElementById('orderModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+
+    document.querySelectorAll('[data-bs-target="#orderModal"][data-product]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const prod = this.getAttribute('data-product');
+        const select = document.getElementById('modal-product');
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value.includes(prod) || select.options[i].text.includes(prod)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      });
+    });
+
+    modalForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!modalForm.checkValidity()) {
+        modalForm.classList.add('was-validated');
+      } else {
+        modalInstance.hide();
+        modalForm.reset();
+        modalForm.classList.remove('was-validated');
+        toast.show();
+      }
+    }, false);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обратная связь — CactusShop</title>
+  <!-- Локальное подключение Bootstrap CSS -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Пользовательские стили с точной палитрой из КР1 -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<!-- Шапка сайта (Header) с фирменной стилизацией КР1 и Bootstrap Navbar -->
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom py-3" aria-label="Основная навигация">
+      <div class="container-fluid px-0">
+        <a class="site-header__logo navbar-brand me-4" href="index.html">СactusShop</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1 gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">Каталог</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#advantages">Преимущества</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#popular">Популярные товары</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="feedback.html">Обратная связь</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.html">Товар</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order.html">Заявка</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button class="button button--primary py-1 px-3" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" style="font-size: 14px;">
+                Заказать
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container py-4">
+  <!-- Хлебные крошки (Breadcrumbs) из КР1 -->
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a class="breadcrumbs__link" href="index.html">Главная</a> /
+    <span class="breadcrumbs__current">Обратная связь</span>
+  </nav>
+
+  <section class="section">
+    <h1 class="h2 fw-bold mb-3">Обратная связь</h1>
+    <p class="text-muted mb-4">
+      Если у вас возникли вопросы по уходу за суккулентами, предложения по сотрудничеству или вы хотите оформить индивидуальный заказ на флорариум — заполните форму ниже. Наш специалист свяжется с вами в ближайшее время!
+    </p>
+
+    <!-- Контейнер для центрирования формы на странице из КР1 -->
+    <div class="feedback-container">
+      <form class="order-form" id="page-feedback-form" novalidate>
+        <div class="order-form__field mb-3">
+          <label class="order-form__label fw-bold mb-1" for="feedback-name">Имя <span class="text-danger">*</span></label>
+          <input class="order-form__input form-control" id="feedback-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" required>
+          <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+        </div>
+
+        <div class="order-form__field mb-3">
+          <label class="order-form__label fw-bold mb-1" for="feedback-email">E-mail <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">@</span>
+            <input class="order-form__input form-control" id="feedback-email" name="email" type="email" placeholder="example@mail.ru" required>
+          </div>
+          <div class="invalid-feedback">Укажите корректный e-mail.</div>
+        </div>
+
+        <div class="order-form__field mb-3">
+          <label class="order-form__label fw-bold mb-1" for="feedback-phone">Телефон <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">+7</span>
+            <input class="order-form__input form-control" id="feedback-phone" name="phone" type="tel" placeholder="900 000-00-00" required>
+          </div>
+          <small class="text-muted d-block mt-1">Формат: +7 (900) 000-00-00</small>
+          <div class="invalid-feedback">Укажите номер телефона.</div>
+        </div>
+
+        <div class="order-form__field mb-3">
+          <label class="order-form__label fw-bold mb-1" for="feedback-comment">Комментарий</label>
+          <textarea class="order-form__input form-control" id="feedback-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию"></textarea>
+        </div>
+
+        <div class="order-form__field mb-4">
+          <div class="form-check">
+            <input class="form-check-input" id="feedback-agreement" name="agreement" type="checkbox" required checked>
+            <label class="form-check-label" for="feedback-agreement">
+              Я согласен на обработку данных <span class="text-danger">*</span>
+            </label>
+            <div class="invalid-feedback">Требуется согласие на обработку данных.</div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="button button--primary flex-grow-1" type="submit">Отправить заявку</button>
+          <button class="button button--secondary" type="reset">Очистить</button>
+        </div>
+      </form>
+
+      <!-- Уведомление об успешной отправке из КР1 -->
+      <p class="success-message mt-3" id="feedback-success-message" style="display: none;">
+        Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- Подвал сайта (Footer) в точной палитре #F2F1EB из КР1 -->
+<footer>
+  <div class="container text-center text-md-start">
+    <div class="row align-items-center g-2">
+      <div class="col-12 col-md-6">
+        <p class="mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="mb-0 text-muted">Магазин комнатных растений и суккулентов CactusShop</p>
+      </div>
+      <div class="col-12 col-md-6 text-md-end">
+        <p class="mb-1"><strong>Контрольная работа №2</strong> • Bootstrap 5</p>
+        <p class="mb-0 text-muted">Автор: Комарова Влада Андреевна, ЭФБО-03-2025</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Модальное окно заявки (Bootstrap Modal) -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+      <div class="modal-header" style="background-color: var(--color-shapka);">
+        <h2 class="modal-title h5 mb-0" id="orderModalLabel">Оформление заявки</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="modalOrderForm" novalidate>
+          <div class="mb-3">
+            <label for="modal-product" class="form-label fw-bold">Выбранный товар</label>
+            <select id="modal-product" class="form-select" required>
+              <option value="Ферокактус шварции" selected>Ферокактус шварции (381 руб.)</option>
+              <option value="Хавортия маргаритифера">Хавортия маргаритифера (499 руб.)</option>
+              <option value="Эхеверия мун фейри">Эхеверия мун фейри (659 руб.)</option>
+              <option value="Кактус Микс (Cactus Mix)">Кактус Микс (2679 руб.)</option>
+              <option value="Эхинокактус грузони">Эхинокактус грузони (4789 руб.)</option>
+              <option value="Крассула овата минор">Крассула овата минор (899 руб.)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="modal-name" class="form-label fw-bold">Имя</label>
+            <input id="modal-name" type="text" class="form-control" placeholder="Введите ваше имя" required minlength="2">
+            <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-email" class="form-label fw-bold">E-mail</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">@</span>
+              <input id="modal-email" type="email" class="form-control" placeholder="example@mail.ru" required>
+            </div>
+            <div class="invalid-feedback">Укажите корректный e-mail.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-phone" class="form-label fw-bold">Телефон</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">+7</span>
+              <input id="modal-phone" type="tel" class="form-control" placeholder="900 000-00-00" required>
+            </div>
+            <div class="invalid-feedback">Укажите номер телефона.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-comment" class="form-label fw-bold">Комментарий</label>
+            <textarea id="modal-comment" class="form-control" rows="3" placeholder="Укажите дополнительную информацию"></textarea>
+          </div>
+          <div class="form-check mb-4">
+            <input id="modal-agree" class="form-check-input" type="checkbox" required checked>
+            <label class="form-check-label" for="modal-agree">
+              Я согласен на обработку данных
+            </label>
+            <div class="invalid-feedback">Требуется согласие.</div>
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <button type="button" class="button button--secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="button button--primary">Отправить заявку</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Всплывающее уведомление (Bootstrap Toast) -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+  <div id="liveToast" class="toast align-items-center text-white border-0" style="background-color: var(--color-success);" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Форма успешно отправлена! Наш менеджер скоро свяжется с вами.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Плавающая кнопка возврата наверх из КР1 -->
+<a class="scroll-top-btn" href="#" title="Наверх">↑</a>
+
+<!-- Локальное подключение Bootstrap JS Bundle -->
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const fbForm = document.getElementById('page-feedback-form');
+    const successMsg = document.getElementById('feedback-success-message');
+    const toastEl = document.getElementById('liveToast');
+    const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+
+    fbForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!fbForm.checkValidity()) {
+        fbForm.classList.add('was-validated');
+      } else {
+        fbForm.classList.remove('was-validated');
+        successMsg.style.display = 'block';
+        toast.show();
+        fbForm.reset();
+      }
+    }, false);
+  });
+</script>
+
+</body>
+</html>

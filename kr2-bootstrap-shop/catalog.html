@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог товаров — Учебный интернет-магазин CactusShop</title>
+  <!-- Локальное подключение Bootstrap CSS -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Пользовательские стили с точной палитрой из КР1 -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<!-- Шапка сайта (Header) с фирменной стилизацией КР1 и Bootstrap Navbar -->
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom py-3" aria-label="Основная навигация">
+      <div class="container-fluid px-0">
+        <a class="site-header__logo navbar-brand me-4" href="index.html">СactusShop</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1 gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#advantages">Преимущества</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#popular">Популярные товары</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Обратная связь</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.html">Товар</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order.html">Заявка</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button class="button button--primary py-1 px-3" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" style="font-size: 14px;">
+                Заказать
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container py-4">
+  <!-- Хлебные крошки (Breadcrumbs) из КР1 -->
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a class="breadcrumbs__link" href="index.html">Главная</a> /
+    <span class="breadcrumbs__current">Каталог</span>
+  </nav>
+
+  <!-- Информационное сообщение (Alert) -->
+  <div class="alert alert-info alert-dismissible fade show d-flex align-items-center mb-4" role="alert" style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text);">
+    <div class="me-auto">
+      <strong>Каталог растений:</strong> Выберите суккулент из каталога. Все карточки оформлены с использованием компонента <code>card</code> на адаптивной сетке Bootstrap.
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+  </div>
+
+  <section class="section mb-5">
+    <h1 class="h2 fw-bold mb-2">Каталог товаров</h1>
+    <p class="text-muted mb-4">На этой странице представлен учебный каталог товаров.</p>
+
+    <!-- Двухколоночный макет каталога на Bootstrap-сетке (260px / 1fr) -->
+    <div class="row g-4 align-items-start">
+      <!-- Боковая панель фильтрации слева (col-12 col-lg-3) -->
+      <aside class="col-12 col-lg-3">
+        <div class="catalog-filters">
+          <h2 class="h5 fw-bold mb-3">Фильтры</h2>
+
+          <form class="filters-form" action="#" method="get">
+            <fieldset class="filters-form__fieldset">
+              <legend class="filters-form__legend">Категория</legend>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="category" value="all" id="cat-all" checked>
+                <label class="form-check-label" for="cat-all">Все товары</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="category" value="popular" id="cat-popular">
+                <label class="form-check-label" for="cat-popular">Популярные</label>
+              </div>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" name="category" value="new" id="cat-new">
+                <label class="form-check-label" for="cat-new">Новинки</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="filters-form__fieldset">
+              <legend class="filters-form__legend">Цена</legend>
+              <div class="mb-2">
+                <label class="form-label small mb-1" for="price-from">От</label>
+                <input class="filters-form__input form-control form-control-sm" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+              </div>
+              <div>
+                <label class="form-label small mb-1" for="price-to">До</label>
+                <input class="filters-form__input form-control form-control-sm" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+              </div>
+            </fieldset>
+
+            <button class="button button--primary w-100" type="submit">Применить</button>
+          </form>
+        </div>
+      </aside>
+
+      <!-- Список товаров справа на Bootstrap-сетке (col-12 col-lg-9) -->
+      <section class="col-12 col-lg-9">
+        <h2 class="h4 fw-bold mb-3">Список товаров</h2>
+
+        <div class="row g-4">
+          <!-- 1. Ферокактус шварции -->
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="product-card h-100">
+              <span class="product-card__badge product-card__badge--hit">Хит</span>
+              <img class="product-card__image" src="images/ferocactus.jpg" alt="Ферокактус шварции в горшке" width="300" height="300" loading="lazy">
+              <h3 class="product-card__title">Ферокактус шварции</h3>
+              <p class="product-card__description">Ферокактус Шварции (Ferocactus schwarzii) — это необычный комнатный кактус с плотным шаровидным стеблем, выраженными рёбрами и декоративными светлыми колючками.</p>
+              <p class="product-card__price">Цена: 381 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="button button--secondary" href="product.html">Подробнее</a>
+                <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Ферокактус шварции">Заказать</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- 2. Хавортия маргаритифера -->
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="product-card h-100">
+              <img class="product-card__image" src="images/haworthia.jpg" alt="Хавортия маргаритифера" width="300" height="300" loading="lazy">
+              <h3 class="product-card__title">Хавортия маргаритифера</h3>
+              <p class="product-card__description">Хавортия Маргаритифера (Haworthia Margaritifera) – это редкое комнатное растение и суккулент, отличающееся плотными зелёными листьями с белыми выпуклыми точками, напоминающими жемчужины.</p>
+              <p class="product-card__price">Цена: 499 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="button button--secondary" href="product.html">Подробнее</a>
+                <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Хавортия маргаритифера">Заказать</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- 3. Эхеверия мун фейри -->
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="product-card h-100">
+              <span class="product-card__badge product-card__badge--new">Новинка</span>
+              <img class="product-card__image" src="images/echeveria.jpg" alt="Эхеверия мун фейри" width="300" height="300" loading="lazy">
+              <h3 class="product-card__title">Эхеверия мун фейри</h3>
+              <p class="product-card__description">Эхеверия Мун Фейри — декоративный суккулент с нежной окраской и аккуратной розеткой листьев. Растение относится к группе Echeveria и ценится за гармоничную форму и мягкие оттенки.</p>
+              <p class="product-card__price">Цена: 659 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="button button--secondary" href="product.html">Подробнее</a>
+                <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Эхеверия мун фейри">Заказать</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- 4. Кактус Микс (Cactus Mix) -->
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="product-card h-100">
+              <img class="product-card__image" src="images/kaktus-miks.jpg" alt="Кактус Микс (Cactus Mix)" width="300" height="300" loading="lazy">
+              <h3 class="product-card__title">Кактус Микс (Cactus Mix)</h3>
+              <p class="product-card__description">Кактус Микс — это набор из разных видов кактусов, объединённых в одной композиции. В каждом горшке могут встречаться колючие шаровидные формы, вытянутые колонновидные кактусы или миниатюрные редкие экземпляры.</p>
+              <p class="product-card__price">Цена: 2679 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="button button--secondary" href="product.html">Подробнее</a>
+                <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Кактус Микс (Cactus Mix)">Заказать</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- 5. Эхинокактус грузони -->
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="product-card h-100">
+              <img class="product-card__image" src="images/ehinokaktus-gruzoni-.jpg" alt="Эхинокактус грузони" width="300" height="300" loading="lazy">
+              <h3 class="product-card__title">Эхинокактус грузони</h3>
+              <p class="product-card__description">Эхинокактус Грузони — декоративный комнатный кактус округлой формы с выраженными рёбрами и золотистыми колючками. Его часто называют кактус золотой шар, круглый кактус или кактус-шар.</p>
+              <p class="product-card__price">Цена: 4789 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="button button--secondary" href="product.html">Подробнее</a>
+                <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Эхинокактус грузони">Заказать</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- 6. Крассула овата минор -->
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="product-card h-100">
+              <img class="product-card__image" src="images/krassula-ovata-minor.jpg" alt="Крассула овата минор" width="300" height="300" loading="lazy">
+              <h3 class="product-card__title">Крассула овата минор</h3>
+              <p class="product-card__description">Крассула Овата Минор (Crassula Ovata Minor) – миниатюрный сорт знаменитого «денежного дерева», отличающийся более мелкими, аккуратными листьями по сравнению с классической овата.</p>
+              <p class="product-card__price">Цена: 899 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="button button--secondary" href="product.html">Подробнее</a>
+                <button class="button button--primary product-card__button" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Крассула овата минор">Заказать</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Навигация по страницам каталога (Bootstrap Pagination) -->
+        <nav aria-label="Пагинация каталога" class="mt-4">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">«</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </section>
+
+  <!-- Секция сравнения характеристик из КР1 -->
+  <section class="section mb-5">
+    <h2 class="h3 fw-bold mb-3">Сравнение характеристик</h2>
+    <div class="table-responsive">
+      <table class="product-table table-bordered align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Характеристика</th>
+            <th scope="col">Ферокактус шварции</th>
+            <th scope="col">Хавортия маргаритифера</th>
+            <th scope="col">Эхеверия мун фейри</th>
+            <th scope="col">Кактус Микс (Cactus Mix)</th>
+            <th scope="col">Эхинокактус грузони</th>
+            <th scope="col">Крассула овата минор</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Тип защитных элементов / Текстура поверхности</th>
+            <td>Имеет выраженные ребра с острыми декоративными светлыми колючками.</td>
+            <td>Без колючек, но с плотными листьями, покрытыми выпуклыми белыми точками, напоминающими жемчужины.</td>
+            <td>Полностью гладкие, нежные листья без колючек и наростов, собранные в аккуратную розетку.</td>
+            <td>Разнообразная: могут встречаться как колючие экземпляры, так и другие текстуры в зависимости от состава набора.</td>
+            <td>Поверхность с выраженными рёбрами, покрытая плотными золотистыми колючками.</td>
+            <td>Гладкие, плотные, мелкие и аккуратные мясистые листья без колючек.</td>
+          </tr>
+          <tr>
+            <th scope="row">Форма роста и силуэт</th>
+            <td>Шаровидная (круглая) форма с четкой вертикальной геометрией за счет ребер.</td>
+            <td>Кустистая / звездчатая форма с заостренными листьями, растущими вверх и в стороны.</td>
+            <td>Форма правильной геометрии («каменная роза») с плоской и компактной прикорневой розеткой.</td>
+            <td>Сборный силуэт: сочетает шаровидные, вытянутые колонновидные и миниатюрные редкие формы в одной композиции.</td>
+            <td>Округлая, куполообразная форма («кактус золотой шар» или круглый кактус).</td>
+            <td>Миниатюрное деревце с компактной кроной, отлично подходит для создания бонсай.</td>
+          </tr>
+          <tr>
+            <th scope="row">Ценовая категория</th>
+            <td>Бюджетный вариант (381 руб.) — самый доступный товар в представленной тройке.</td>
+            <td>Средний ценовой сегмент (499 руб.) — сбалансированная стоимость за редкий суккулент.</td>
+            <td>Премиум-вариант (659 руб.) — самое дорогое растение из трех, позиционируемое как декоративный суккулент с нежным окрасом.</td>
+            <td>Средне-высокий сегмент (2679 руб.) за готовую разнообразную композицию.</td>
+            <td>Премиум-сегмент (4789 руб.) — самое дорогое растение в каталоге, крупный декоративный экземпляр.</td>
+            <td>Доступный сегмент (899 руб.) за изящное сортовое «денежное дерево».</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<!-- Подвал сайта (Footer) в точной палитре #F2F1EB из КР1 -->
+<footer>
+  <div class="container text-center text-md-start">
+    <div class="row align-items-center g-2">
+      <div class="col-12 col-md-6">
+        <p class="mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="mb-0 text-muted">Магазин комнатных растений и суккулентов CactusShop</p>
+      </div>
+      <div class="col-12 col-md-6 text-md-end">
+        <p class="mb-1"><strong>Контрольная работа №2</strong> • Bootstrap 5</p>
+        <p class="mb-0 text-muted">Автор: Комарова Влада Андреевна, ЭФБО-03-2025</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Модальное окно заявки (Bootstrap Modal) -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+      <div class="modal-header" style="background-color: var(--color-shapka);">
+        <h2 class="modal-title h5 mb-0" id="orderModalLabel">Оформление заявки</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="modalOrderForm" novalidate>
+          <div class="mb-3">
+            <label for="modal-product" class="form-label fw-bold">Выбранный товар</label>
+            <select id="modal-product" class="form-select" required>
+              <option value="Ферокактус шварции" selected>Ферокактус шварции (381 руб.)</option>
+              <option value="Хавортия маргаритифера">Хавортия маргаритифера (499 руб.)</option>
+              <option value="Эхеверия мун фейри">Эхеверия мун фейри (659 руб.)</option>
+              <option value="Кактус Микс (Cactus Mix)">Кактус Микс (2679 руб.)</option>
+              <option value="Эхинокактус грузони">Эхинокактус грузони (4789 руб.)</option>
+              <option value="Крассула овата минор">Крассула овата минор (899 руб.)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="modal-name" class="form-label fw-bold">Имя</label>
+            <input id="modal-name" type="text" class="form-control" placeholder="Введите ваше имя" required minlength="2">
+            <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-email" class="form-label fw-bold">E-mail</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">@</span>
+              <input id="modal-email" type="email" class="form-control" placeholder="example@mail.ru" required>
+            </div>
+            <div class="invalid-feedback">Укажите корректный e-mail.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-phone" class="form-label fw-bold">Телефон</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background-color: var(--color-surface); border-color: var(--color-border);">+7</span>
+              <input id="modal-phone" type="tel" class="form-control" placeholder="900 000-00-00" required>
+            </div>
+            <div class="invalid-feedback">Укажите номер телефона.</div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-comment" class="form-label fw-bold">Комментарий</label>
+            <textarea id="modal-comment" class="form-control" rows="3" placeholder="Укажите дополнительную информацию"></textarea>
+          </div>
+          <div class="form-check mb-4">
+            <input id="modal-agree" class="form-check-input" type="checkbox" required checked>
+            <label class="form-check-label" for="modal-agree">
+              Я согласен на обработку данных
+            </label>
+            <div class="invalid-feedback">Требуется согласие.</div>
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <button type="button" class="button button--secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="button button--primary">Отправить заявку</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Всплывающее уведомление (Bootstrap Toast) -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+  <div id="liveToast" class="toast align-items-center text-white border-0" style="background-color: var(--color-success);" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Форма успешно отправлена! Наш менеджер скоро свяжется с вами.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Плавающая кнопка возврата наверх из КР1 -->
+<a class="scroll-top-btn" href="#" title="Наверх">↑</a>
+
+<!-- Локальное подключение Bootstrap JS Bundle -->
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const modalForm = document.getElementById('modalOrderForm');
+    const toastEl = document.getElementById('liveToast');
+    const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+    const modalEl = document.getElementById('orderModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+
+    document.querySelectorAll('[data-bs-target="#orderModal"][data-product]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const prod = this.getAttribute('data-product');
+        const select = document.getElementById('modal-product');
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value.includes(prod) || select.options[i].text.includes(prod)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      });
+    });
+
+    modalForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!modalForm.checkValidity()) {
+        modalForm.classList.add('was-validated');
+      } else {
+        modalInstance.hide();
+        modalForm.reset();
+        modalForm.classList.remove('was-validated');
+        toast.show();
+      }
+    }, false);
+  });
+</script>
+
+</body>
+</html>

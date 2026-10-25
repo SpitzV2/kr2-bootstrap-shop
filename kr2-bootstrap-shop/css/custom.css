@@ -1,0 +1,490 @@
+/* ==========================================================================
+   custom.css — Точная цветовая палитра и визуальный стиль из КР1 (CactusShop)
+   Подключается строго после Bootstrap для соблюдения фирменного дизайна КР1.
+   ========================================================================== */
+
+/* 1. Переменные палитры проекта CactusShop строго из kr1-html-css-shop */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #232238;           /* Мягкий чернильно-синий вместо черного */
+  --color-muted: #666666;
+  --color-primary: #B8A26D;        /* Золотисто-песочный / Тауп */
+  --color-primary-dark: #B89034;   /* Тёмный песочно-карамельный */
+  --color-border: #3D7854;         /* Травянисто-хвойный зелёный */
+  --color-surface: #F2F1EB;        /* Тёплый кремово-серый */
+  --color-surface-accent: #B8B4A0; /* Мягкий светло-серый тауп палитры */
+  --color-danger: #631B1E;         /* Глубокий бордово-винный цвет ховера */
+  --color-success: #3D7854;        /* Фирменный хвойный зелёный */
+  --color-success-bg: #eefaf0;     /* Нежный пастельный фон успеха */
+  --color-white: #ffffff;
+  --color-shapka: #F0EBD5;         /* Тёплый льняной цвет шапки */
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --container-width: 1140px;
+
+  /* Переопределение переменных Bootstrap 5 под палитру КР1 */
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text);
+  --bs-primary: #3D7854;
+  --bs-primary-rgb: 61, 120, 84;
+  --bs-secondary: #B8A26D;
+  --bs-secondary-rgb: 184, 162, 109;
+  --bs-success: #3D7854;
+  --bs-success-rgb: 61, 120, 84;
+  --bs-danger: #631B1E;
+  --bs-danger-rgb: 99, 27, 30;
+  --bs-link-color: #B8A26D;
+  --bs-link-hover-color: #B89034;
+  --bs-border-color: #3D7854;
+}
+
+/* 2. Базовые правила */
+body {
+  font-family: Arial, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* 3. Шапка сайта (Header) — точный цвет #F0EBD5 из КР1 */
+.site-header {
+  background-color: var(--color-shapka) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(61, 120, 84, 0.15);
+}
+
+.site-header__logo {
+  font-weight: 700;
+  color: var(--color-text) !important;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+}
+
+/* Навигация (Navbar) в стилистике КР1 */
+.navbar-custom {
+  background-color: var(--color-shapka) !important;
+  padding: 0;
+}
+
+.navbar-custom .nav-link {
+  color: var(--color-primary) !important;
+  font-size: 15px;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm) !important;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover {
+  color: var(--color-primary-dark) !important;
+  text-decoration: underline;
+}
+
+.navbar-custom .nav-link.active {
+  color: var(--color-primary-dark) !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+}
+
+/* 4. Hero-блок — точный фон #B8B4A0 из КР1 */
+.hero {
+  background-color: var(--color-surface-accent) !important;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  color: var(--color-text);
+}
+
+.hero h1, .hero h2 {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.hero p {
+  color: var(--color-text);
+}
+
+/* Карусель (Bootstrap Carousel) внутри hero-блока */
+.carousel-item img {
+  height: 280px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 200px;
+  }
+}
+
+.carousel-caption {
+  background-color: rgba(35, 34, 56, 0.75);
+  backdrop-filter: blur(2px);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+}
+
+/* 5. Кнопки (Buttons) — фирменный переход: #3D7854 -> #631B1E */
+.btn-primary,
+.button--primary {
+  color: var(--color-white) !important;
+  background-color: var(--color-success) !important;
+  border: 1px solid var(--color-success) !important;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.button--primary:hover {
+  background-color: var(--color-danger) !important;
+  border-color: var(--color-danger) !important;
+  color: var(--color-white) !important;
+}
+
+.btn-secondary,
+.btn-outline-primary,
+.button--secondary {
+  color: var(--color-primary) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--color-primary) !important;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover,
+.btn-outline-primary:hover,
+.button--secondary:hover {
+  color: var(--color-white) !important;
+  background-color: var(--color-primary) !important;
+}
+
+/* 6. Карточки товаров (Product Card) точно как в КР1 */
+.product-card,
+.card {
+  position: relative;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.product-card:hover,
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.product-card__image,
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(61, 120, 84, 0.2);
+}
+
+.product-card__title,
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.product-card__description,
+.card-text {
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+.product-card__price {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.product-card__button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Бейджи поверх карточек как в КР1 */
+.product-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  z-index: 10;
+}
+
+.product-card__badge--hit {
+  background-color: #0057b8 !important; /* Насыщенный синий из КР1 */
+}
+
+.product-card__badge--new {
+  background-color: #198754 !important; /* Приглушенный зеленый из КР1 */
+}
+
+.product-card__badge--sale {
+  background-color: #631B1E !important; /* Бордовый */
+}
+
+/* 7. Блок преимуществ */
+.advantages-list {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.advantages-list li {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.advantage-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  height: 100%;
+}
+
+/* 8. Фильтры каталога (Catalog Filters) */
+.catalog-filters {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  position: sticky;
+  top: var(--space-md);
+}
+
+.filters-form__fieldset {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.filters-form__legend {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text);
+  padding: 0 6px;
+  width: auto;
+  float: none;
+}
+
+.filters-form__input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+}
+
+/* 9. Таблица характеристик (Product Table) из КР1 */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-md);
+  background-color: var(--color-bg);
+}
+
+.product-table caption {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: var(--space-sm);
+  text-align: left;
+  color: var(--color-text);
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-size: 14px;
+}
+
+.product-table th {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* 10. Формы и модальные окна */
+.feedback-container {
+  max-width: 600px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-xl);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.order-form__input,
+.order-form__select,
+.order-form__textarea,
+.form-control,
+.form-select {
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: var(--color-text);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary-dark) !important;
+  box-shadow: 0 0 0 3px rgba(184, 162, 109, 0.25) !important;
+}
+
+.success-message {
+  border-left: 4px solid var(--color-success);
+  background-color: var(--color-success-bg);
+  color: var(--color-text);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+/* 11. Хлебные крошки (Breadcrumbs) */
+.breadcrumbs {
+  margin-bottom: var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs__link {
+  color: var(--color-primary) !important;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--color-primary-dark) !important;
+  text-decoration: underline;
+}
+
+/* 12. Подвал (Footer) — точный цвет #F2F1EB из КР1 */
+footer {
+  padding: var(--space-lg);
+  background-color: var(--color-surface) !important;
+  color: var(--color-text);
+  border-top: 1px solid rgba(61, 120, 84, 0.15);
+  margin-top: auto;
+}
+
+footer p {
+  margin-bottom: 4px;
+}
+
+/* 13. Кнопка возврата наверх (.scroll-top-btn) */
+.scroll-top-btn {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: var(--color-white) !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-top-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.1);
+}
+
+/* Стилизация вкладок Tabs под палитру КР1 */
+.nav-tabs .nav-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--color-primary-dark);
+  border-color: var(--color-border) var(--color-border) transparent;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--color-text) !important;
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-border) var(--color-border) transparent !important;
+  font-weight: 700;
+}
+
+/* Стилизация аккордеона под палитру КР1 */
+.accordion-button:not(.collapsed) {
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+
+.accordion-item {
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-sm);
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden;
+}
+
+/* Стилизация пагинации */
+.page-link {
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+.page-link:hover {
+  color: var(--color-primary-dark);
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.page-item.active .page-link {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-white);
+}
